@@ -15,8 +15,8 @@
 # Note, PYZ and ZOAU environment variables must be configured.
 ################################################################################
 
-PYZ: /_PRDS/PYT/v3.9/pyz
-ZOAU: /_PRDS/ZOA/v1.1
+PYZ: /_PRDS/PYT/current/pyz
+ZOAU: /_PRDS/ZOA/current
 
 ################################################################################
 # Do not configure, variable substituion will correctly set the
