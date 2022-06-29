@@ -22,4 +22,8 @@ ZOAU: /_PRDS/ZOA/current
 # Do not configure, variable substituion will correctly set the
 # variable`ansible_python_interpreter`
 ################################################################################
-ansible_python_interpreter: "{{ PYZ }}/bin/python3.9"
+ansible_python_interpreter: /_PRDS/PYT/current/pyz/bin/python3
+PYZM: "/_PRDS/PYT"
+PYZ: "{{ PYZM }}/current/pyz"
+ZOAM: "/_PRDS/ZOA"
+ZOAU: "{{ ZOAM }}/current"
