@@ -3,8 +3,21 @@
 ################################################################################
 
 ################################################################################
-# Enviroment variables for all z/OS managed nodes (target) that do not need
-# further configuration.
+# Configure dependency installations
+################################################################################
+# 
+#ansible_python_interpreter: /_PRDS/PYTHON/SCYPH38/pyz/bin/python3
+#PYZ: "/_PRDS/PYTHON/SCYPH38/pyz"
+#ZOAU: "/_PRDS/ZOAUTIL/SBGYZFS"
+
+ansible_python_interpreter: /_PRDS/PYT/current/pyz/bin/python3
+PYZM: "/_PRDS/PYT"
+PYZ: "{{ PYZM }}/current/pyz"
+ZOAM: "/_PRDS/ZOA"
+ZOAU: "{{ ZOAM }}/current"
+
+################################################################################
+# Playbook enviroment variables
 ################################################################################
 environment_vars:
   ZOAU_HOME: "{{ ZOAU }}"
@@ -14,6 +27,7 @@ environment_vars:
   MANPATH: "{{ ZOAU }}/docs/%L"
   PATH: "{{ ZOAU }}/bin:{{ PYZ }}/bin:/bin"
   PYTHONPATH: "{{ ZOAM }}/zoautil_py_current"
+  ANSIBLE_REMOTE_TMP: /tmp/ansible
   LANG: "C"
   _BPXK_AUTOCVT: "ON"
   _CEE_RUNOPTS: "FILETAG(AUTOCVT,AUTOTAG) POSIX(ON)"
@@ -22,26 +36,3 @@ environment_vars:
   _TAG_REDIR_OUT: "txt"
   _ENCODE_FILE_NEW: "IBM-1047"
   _ENCODE_FILE_EXISTING: "IBM-1047"
-
-################################################################################
-# Description of the properties used in this configuration:
-################################################################################
-# - Property BPXK_AUTOCVT must be configured to "ON"; e.g., _BPXK_AUTOCVT: "ON"
-# - Property ZOAU_HOME is the ZOA Utilities install root path; e.g., ZOAU_HOME: "/usr/lpp/IBM/zoautil"
-# - Property PYTHONPATH is the ZOA Utilities Python library path; e.g., PYTHONPATH: "/usr/lpp/IBM/zoautil/lib"
-# - Property LIBPATH is both the path to the Python libraries on the target
-#   and the ZOA Utilities Python library path separated by semi-colons; e.g.,
-#   LIBPATH: "/usr/lpp/IBM/zoautil/lib/:/usr/lpp/IBM/cyp/v3r8/pyz/lib:/usr/lib:/lib:."
-# - Property PATH is the ZOA utilities BIN path and Python interpreter path, e.g.,
-#   PATH: "/usr/lpp/IBM/zoautil/bin:/usr/lpp/IBM/cyp/v3r8/pyz/bin:/bin"
-# - Property _CEE_RUNOPTS is the invocation Language Environment® runtime
-#   options for programs and used by Python. e.g.,
-#   _CEE_RUNOPTS: "FILETAG(AUTOCVT,AUTOTAG) POSIX(ON)"
-# - Properties __TAG_REDIR_ERR, _TAG_REDIR_IN, _TAG_REDIR_OUT are txt and used
-#   by the shell; e.g.,
-#      _TAG_REDIR_ERR: "txt"
-#      _TAG_REDIR_IN: "txt"
-#      _TAG_REDIR_OUT: "txt"
-# - Property LANG is the name of the default locale; value
-#   C specifies the POSIX locale; for example: ``LANG: "C"``.
-################################################################################
