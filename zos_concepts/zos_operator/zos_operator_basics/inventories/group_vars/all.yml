@@ -7,16 +7,21 @@
 # further configuration.
 ################################################################################
 environment_vars:
-  _BPXK_AUTOCVT: "ON"
   ZOAU_HOME: "{{ ZOAU }}"
-  PYTHONPATH: "{{ ZOAU }}/lib"
-  LIBPATH: "{{ ZOAU }}/lib:{{ PYZ }}/lib:/lib:/usr/lib:."
-  PATH: "{{ ZOAU }}/bin:{{ PYZ }}/bin:/bin:/var/bin"
+  CLASSPATH: "{{ ZOAU }}/lib/*"
+  JAVA_HOME: "/usr/lpp/java/J8.0_64"
+  LIBPATH: "{{ ZOAU }}/lib:{{ PYZ }}/lib"
+  MANPATH: "{{ ZOAU }}/docs/%L"
+  PATH: "{{ ZOAU }}/bin:{{ PYZ }}/bin:/bin"
+  PYTHONPATH: "{{ ZOAM }}/zoautil_py_current"
+  LANG: "C"
+  _BPXK_AUTOCVT: "ON"
   _CEE_RUNOPTS: "FILETAG(AUTOCVT,AUTOTAG) POSIX(ON)"
   _TAG_REDIR_ERR: "txt"
   _TAG_REDIR_IN: "txt"
   _TAG_REDIR_OUT: "txt"
-  LANG: "C"
+  _ENCODE_FILE_NEW: "IBM-1047"
+  _ENCODE_FILE_EXISTING: "IBM-1047"
 
 ################################################################################
 # Description of the properties used in this configuration:
